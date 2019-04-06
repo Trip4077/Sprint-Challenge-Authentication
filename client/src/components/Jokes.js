@@ -1,13 +1,19 @@
 import React from 'react';
 import axios from 'axios';
-
 import requireAuth from '../auth/requireAuth';
+
+import { withRouter } from 'react-router-dom';
 
 class Jokes extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = { jokes: [] }
+    }
+
+    logout = e => {
+        localStorage.removeItem('JWT');
+        this.props.history.push('/welcome');
     }
 
     componentDidMount() {
@@ -23,6 +29,7 @@ class Jokes extends React.Component {
     render() {
         return(
             <div>
+                <button onClick={this.logout}>Logout</button>
                 <h1>Dad Jokes</h1>
                 <ul>
                    { this.state.jokes.map(joke => <li key={joke.id}>{ joke.joke }</li>)} 
@@ -32,4 +39,4 @@ class Jokes extends React.Component {
     }
 }
 
-export default requireAuth(Jokes);
+export default requireAuth(withRouter(Jokes));
