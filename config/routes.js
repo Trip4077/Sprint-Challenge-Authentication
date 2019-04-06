@@ -1,3 +1,4 @@
+require('dotenv').config();
 const axios = require('axios');
 
 const bcrypt = require('bcryptjs');
@@ -24,7 +25,7 @@ const genToken = user => {
       expiresIn: '6h'
   }
 
-  const secret = process.env.SECRET || 'It\'s Adventure Time!';
+  const secret = process.env.JWT_SECRET;
 
   return jwt.sign(payload, secret, options);
 }
