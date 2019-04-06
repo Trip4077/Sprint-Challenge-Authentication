@@ -38,12 +38,11 @@ class UserForm extends React.Component {
              .then(res => {
                  console.log(res);
                  localStorage.setItem('JWT', res.data.token);
+                 this.props.history.push('/jokes');
              })
              .catch(err => {
                  console.log(err);
              });
-
-        this.props.history.push('/jokes');
     }
 
     render() {
