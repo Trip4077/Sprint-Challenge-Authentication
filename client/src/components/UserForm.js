@@ -47,7 +47,7 @@ class UserForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='container'>
                 <h1>Welcome</h1>
 
                 <label>Username</label>
@@ -66,8 +66,18 @@ class UserForm extends React.Component {
                        onChange={ this.handleChange }
                        />
 
-                <button onClick={this.login}>Login</button>
-                <button onClick={this.register}>Register</button>
+                <button onClick={this.login}
+                        className='btn waves-effect waves-light'
+                        type='submit'
+                        name='action'>
+                        Login
+                        <i className="material-icons right">send</i>    
+                </button>
+                
+                <button onClick={this.register}
+                        className='btn waves-effect waves-light'>
+                        Register
+                </button>
             </div>
         )
     }

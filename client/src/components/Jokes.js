@@ -29,10 +29,19 @@ class Jokes extends React.Component {
     render() {
         return(
             <div>
-                <button onClick={this.logout}>Logout</button>
                 <h1>Dad Jokes</h1>
+
+                <button onClick={this.logout}
+                        className="btn-floating btn-large waves-effect waves-light red"
+                        id='logout'>
+                        LogOut
+                </button>
+
                 <ul>
-                   { this.state.jokes.map(joke => <li key={joke.id}>{ joke.joke }</li>)} 
+                   { this.state.jokes.map(joke => <li key={joke.id}
+                                                      className='z-depth-1 section'>
+                                                        { joke.joke }
+                                                    </li>)} 
                 </ul>
             </div>
         )
