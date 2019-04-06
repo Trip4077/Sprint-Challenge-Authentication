@@ -17,6 +17,18 @@ class UserForm extends React.Component {
           });
     }
 
+    register = e => {
+        const user = { ...this.state };
+
+        axios.post('http://localhost:3300/api/register', user)
+             .then(res => {
+                 console.log(res);
+             })
+             .catch(err => {
+                 console.log(err);
+             })
+    }
+
     render() {
         return (
             <div>
@@ -39,7 +51,7 @@ class UserForm extends React.Component {
                        />
 
                 <button>Login</button>
-                <button>Register</button>
+                <button onClick={this.register}>Register</button>
             </div>
         )
     }
