@@ -26,7 +26,20 @@ class UserForm extends React.Component {
              })
              .catch(err => {
                  console.log(err);
+             });
+    }
+
+    login = e => {
+        const user = { ...this.state };
+
+        axios.post('http://localhost:3300/api/login', user)
+             .then(res => {
+                 console.log(res);
+                 localStorage.setItem('JWT', res.data.token);
              })
+             .catch(err => {
+                 console.log(err);
+             });
     }
 
     render() {
@@ -50,7 +63,7 @@ class UserForm extends React.Component {
                        onChange={ this.handleChange }
                        />
 
-                <button>Login</button>
+                <button onClick={this.login}>Login</button>
                 <button onClick={this.register}>Register</button>
             </div>
         )
