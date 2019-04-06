@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import { withRouter } from 'react-router-dom';
+
 class UserForm extends React.Component {
     constructor(props) {
         super(props);
@@ -40,6 +42,8 @@ class UserForm extends React.Component {
              .catch(err => {
                  console.log(err);
              });
+
+        this.props.history.push('/jokes');
     }
 
     render() {
@@ -70,4 +74,4 @@ class UserForm extends React.Component {
     }
 }
 
-export default UserForm;
+export default withRouter(UserForm);
